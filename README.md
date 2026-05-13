@@ -1,4 +1,4 @@
-# Discrete Spectrum Tracking (NFT) – Reproducible Notebook
+# Discrete Spectrum Tracking for direct nonlinear Fourier transform (NFT) – Reproducible Notebook
 
 This repository contains a single Jupyter notebook that implements two methods for tracking discrete eigenvalues of the Zakharov–Shabat scattering problem along the longitudinal coordinate `z`:
 1) a deterministic tracker with distance-based gating and the Hungarian algorithm, and  

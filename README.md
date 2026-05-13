@@ -1,10 +1,20 @@
 # Discrete Spectrum Tracking (NFT) – Reproducible Notebook
 
-This repository contains a single Jupyter notebook that implements two methods for tracking discrete eigenvalues of the Zakharov–Shabat scattering problem across longitudinal coordinate `z`:
+This repository contains a single Jupyter notebook that implements two methods for tracking discrete eigenvalues of the Zakharov–Shabat scattering problem along the longitudinal coordinate `z`:
 1) a deterministic tracker with distance-based gating and the Hungarian algorithm, and  
 2) a Kalman-filter-based tracker with χ² gating and assignment.
 
-The notebook renders all figures inline so you can view the results on GitHub or in Jupyter without extra steps.
+The notebook renders all figures inline, so the results can be viewed directly on GitHub or in Jupyter without extra steps.
+
+---
+
+## Associated paper
+
+This notebook accompanies the paper:
+
+> Chekhovskoy, I. S., Shtyrina, O. V., and Fedoruk, M. P. *Nonlinear Fourier Transform as a Tool for Analyzing the Soliton Dynamics in Systems Obeying the Haus–Ginzburg–Landau Equation*. **Bulletin of the Lebedev Physics Institute** 52, Suppl. 11, S1151–S1160 (2025). https://doi.org/10.3103/S1068335625604571
+
+The repository provides the reproducible notebook and example dataset used for the discrete-spectrum tracing demonstration discussed in the paper.
 
 ---
 
@@ -13,12 +23,12 @@ The notebook renders all figures inline so you can view the results on GitHub or
 ```
 .
 ├── README.md                  # this file
-├── requirements.txt           # pinned Python dependencies
-├── ds_tracker.ipynb
+├── LICENSE
+├── ds_tracker.ipynb           # reproducible notebook
 └── NFT_DiscreteSpectrum.dat   # example dataset
 ```
 
-> The dataset file is included alongside the notebook so the workflow is fully reproducible out of the box.
+> The dataset file is included alongside the notebook, so the workflow is reproducible out of the box.
 
 ---
 
@@ -28,8 +38,8 @@ The notebook renders all figures inline so you can view the results on GitHub or
    ```bash
    python -m venv .venv
    source .venv/bin/activate          # Windows: .venv\Scripts\activate
-   pip install -U pip
-   pip install -r requirements.txt
+   python -m pip install -U pip
+   python -m pip install numpy pandas scipy plotly jupyter
    ```
 
 2. **Launch Jupyter and open the notebook**
@@ -42,7 +52,7 @@ The notebook renders all figures inline so you can view the results on GitHub or
    ```
    NFT_DiscreteSpectrum.dat
    ```
-   If you want to use your own data file, either rename it to the same filename or set the `filename` variable at the top of the notebook to your path.
+   To use another data file, either rename it to the same filename or set the `filename` variable at the top of the notebook to your path.
 
 ---
 
@@ -65,10 +75,11 @@ The notebook renders all figures inline so you can view the results on GitHub or
 
 ## Exporting figures (optional)
 
-The notebook already displays Plotly figures inline. If you also want to **save static images** (PNG/SVG/PDF) locally, install Kaleido and use Plotly’s static export:
+The notebook already displays Plotly figures inline. To also **save static images** (PNG/SVG/PDF) locally, install Kaleido and use Plotly’s static export:
 ```bash
-pip install -U kaleido
+python -m pip install -U kaleido
 ```
+
 Then call, for example:
 ```python
 fig.write_image("figure.png", scale=2)  # high-DPI export
@@ -78,22 +89,39 @@ fig.write_image("figure.png", scale=2)  # high-DPI export
 
 ## Requirements
 
-See `requirements.txt` for pinned versions. Core libraries:
+Core libraries:
 - `numpy`, `pandas`
 - `scipy` (Hungarian algorithm for assignment)
-- `plotly` (interactive and 3D figures; optional `kaleido` for static export)
+- `plotly` (interactive and 3D figures)
+- `jupyter` or `jupyterlab` (to run the notebook locally)
+
+Optional:
+- `kaleido` for static Plotly figure export
 
 ---
 
 ## Reproducing the paper result
 
-The provided dataset file is the exact snapshot used to reproduce the mode shown in the paper. Simply keep the file next to the notebook (same directory) and run all cells—no path edits required. The notebook produces the same branch tracking visuals and summary plots as in the manuscript.
+The provided dataset file is the snapshot used to reproduce the discrete-spectrum tracing example shown in the paper. Keep the file next to the notebook and run all cells — no path edits are required. The notebook produces the same branch-tracking visuals for the included dataset.
 
 ---
 
 ## Citing
 
-If you use this code or figures in your research, please cite the associated paper (add your bibliographic entry here).
+If you use this code, dataset, or figures in your research, please cite:
+
+```bibtex
+@article{Chekhovskoy2025NFT_HGLE,
+  author  = {Chekhovskoy, I. S. and Shtyrina, O. V. and Fedoruk, M. P.},
+  title   = {Nonlinear Fourier Transform as a Tool for Analyzing the Soliton Dynamics in Systems Obeying the Haus--Ginzburg--Landau Equation},
+  journal = {Bulletin of the Lebedev Physics Institute},
+  volume  = {52},
+  number  = {Suppl. 11},
+  pages   = {S1151--S1160},
+  year    = {2025},
+  doi     = {10.3103/S1068335625604571}
+}
+```
 
 ---
 
